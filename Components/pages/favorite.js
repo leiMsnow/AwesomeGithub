@@ -6,9 +6,9 @@ import {
     Button,
 } from 'react-native';
 
-export default class Discover extends Component {
+export default class Favorite extends Component {
     static navigationOptions = {
-        title: 'Discover'
+        title: 'Discover',
     };
 
     render() {

@@ -9,54 +9,80 @@ import {
     TabNavigator,
 } from 'react-navigation';
 
-import HomeScreen from './home';
-import DiscoverScreen from './discover';
+import PopularScreen from './popular';
+import TrendingScreen from './trending';
+import FavoriteScreen from './favorite';
 import UserScreen from './user';
+
 import DetailsScreen from './details';
 
+
 export default class App extends Component {
+
     render() {
         return <MyNavigator/>
     }
 }
 
 const MainNavigator = TabNavigator({
-        Home: {
-            screen: HomeScreen,
+        Popular: {
+            screen: PopularScreen,
             navigationOptions: {
-                tabBarLabel: '首页',
+                headerTitle: 'Popular',
                 tabBarIcon: ({tintColor}) => (
-                    _renderIcon(require('../images/ic_home.png'), tintColor)
+                    _renderIcon(require('../images/ic_popular.png'), tintColor)
                 ),
             }
-
         },
-        Discover: {
-            screen: DiscoverScreen,
+        Trending: {
+            screen: TrendingScreen,
             navigationOptions: {
-                tabBarLabel: '发现',
+                headerTitle: 'Trending',
                 tabBarIcon: ({tintColor}) => (
-                    _renderIcon(require('../images/ic_discover.png'), tintColor)
+                    _renderIcon(require('../images/ic_trending.png'), tintColor)
+                ),
+            }
+        },
+        Favorite: {
+            screen: FavoriteScreen,
+            navigationOptions: {
+                headerTitle: 'Favorite',
+                tabBarIcon: ({tintColor}) => (
+                    _renderIcon(require('../images/ic_favorite.png'), tintColor)
                 ),
             }
         },
         User: {
             screen: UserScreen,
             navigationOptions: {
-                tabBarLabel: '我的',
+                headerTitle: 'User',
                 tabBarIcon: ({tintColor}) => (
-                    _renderIcon(require('../images/ic_user.png'), tintColor)
+                    _renderIcon(require('../images/ic_my.png'), tintColor)
                 ),
             }
         },
     },
     {
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: 'black'
+            },
+            headerTitleStyle: {
+                color: 'white',
+            }
+        },
         tabBarPosition: 'bottom',
         tabBarOptions: {
+            activeTintColor: 'lime',
             indicatorStyle: {height: 0},
             showIcon: true,
+            labelStyle: {
+                fontSize: 10,
+            },
+            style: {
+                backgroundColor: 'black',
+            }
         }
-
     });
 
 _renderIcon = (icon, tintColor) => {
@@ -69,9 +95,23 @@ _renderIcon = (icon, tintColor) => {
 };
 
 const MyNavigator = StackNavigator({
-    Home: {screen: MainNavigator},
-    Details: {screen: DetailsScreen},
-});
+        Home: {
+            screen: MainNavigator,
+        },
+        Details: {screen: DetailsScreen},
+    },
+    {
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: 'black'
+            },
+            headerTitleStyle: {
+                color: 'white',
+            }
+        }
+
+    });
+
 
 const styles = StyleSheet.create({
     icon: {

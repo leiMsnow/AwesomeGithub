@@ -6,22 +6,17 @@ import {
     Button,
 } from 'react-native';
 
-export default class Home extends Component {
+export default class Trending extends Component {
     static navigationOptions = {
-        title: 'Home'
+        title: 'Discover'
     };
 
     render() {
-        const {navigate} = this.props.navigation;
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>
-                    Welcome to React Native!
+                    Discover!
                 </Text>
-                <Button
-                    title='open user info'
-                    onPress={() => navigate('Details', {user: 'ray'})}
-                />
             </View>
         );
     }
@@ -38,10 +33,5 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+    }
 });
